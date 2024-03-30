@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = {"com.prova.Repositories"})
 @SpringBootApplication
 public class Av1Application {
-
+ 
 	public static void main(String[] args) {
 		SpringApplication.run(Av1Application.class, args);
 	}

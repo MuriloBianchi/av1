@@ -1,5 +1,6 @@
 package com.prova.domains;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -11,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "airline")
-public class Airline {
+public class Airline implements Serializable{
 
     @Id
     @GeneratedValue(strategy =  GenerationType.UUID)

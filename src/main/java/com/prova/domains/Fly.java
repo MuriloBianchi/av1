@@ -1,5 +1,6 @@
 package com.prova.domains;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -9,12 +10,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "fly")
-public class Fly {
+public class Fly implements Serializable{
 
     @Id
     @GeneratedValue(strategy =  GenerationType.UUID)
@@ -27,7 +27,6 @@ public class Fly {
     private LocalDate departurDate;
     private LocalDate arrivalDate;
 
-    @ManyToOne
     @JoinColumn(name = "id")
     private Aircraft aircraft;
 

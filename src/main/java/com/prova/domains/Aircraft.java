@@ -1,5 +1,6 @@
 package com.prova.domains;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;
@@ -7,12 +8,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "aircraft")
-public class Aircraft {
+public class Aircraft implements Serializable{
 
     @Id
     @GeneratedValue(strategy =  GenerationType.UUID)
@@ -21,7 +21,6 @@ public class Aircraft {
     private String model;
     private Integer capacity;
 
-   @OneToMany
    @JoinColumn(name = "id")
     private Airline airline;
 

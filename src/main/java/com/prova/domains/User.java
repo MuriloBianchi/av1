@@ -18,32 +18,34 @@ import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "usuario")
+public abstract class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-    private String firstName;
-    private String lastName;
+    protected UUID id;
+    protected String firstName;
+    protected String lastName;
 
     @Column(unique = true)
-    private String cpf;
+    protected String cpf;
+    protected String password;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "user")
-    private Set<Integer> userTypes = new HashSet<>();
+    @CollectionTable(name = "users")
+    protected Set<Integer> userTypes = new HashSet<>();
     
     public User() {
         super();
         addUserTypes(UserType.CLIENT);
     }
 
-    public User(UUID id, String firstName, String lastName, String cpf, Set<UserType> userTypes) {
+    public User(UUID id, String firstName, String lastName, String cpf,String password ,Set<UserType> userTypes) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.cpf = cpf;
+        this.password = password;
         addUserTypes(UserType.CLIENT);
     }
 
@@ -77,6 +79,14 @@ public class User {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getPassword(){
+        return password;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
     }
 
     public Set<UserType> getUserTypes() {

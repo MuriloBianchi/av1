@@ -15,11 +15,11 @@ import jakarta.persistence.Table;
 @Table(name = "client")
 public class Client extends User{
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "client")
     private List<Booking> bookings = new ArrayList<>();
 
-    public Client(UUID id, String firstName, String lastName, String cpf, Set<UserType> userTypes) {
-        super(id, firstName, lastName, cpf, userTypes);
+    public Client(UUID id, String firstName, String lastName, String cpf,String password ,Set<UserType> userTypes) {
+        super(id, firstName, lastName, cpf, password, userTypes);
         addUserTypes(UserType.ADMIN);
     }
 

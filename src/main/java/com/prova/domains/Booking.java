@@ -31,17 +31,17 @@ public class Booking {
     private Set<Integer> bookingState = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "iduser")
-    private User user;
+    @JoinColumn(name = "idclient")
+    private Client client;
 
     public Booking() {
     }
 
-    public Booking(UUID id, Date bookingDate, Set<Integer> bookingState, User user) {
+    public Booking(UUID id, Date bookingDate, Set<Integer> bookingState, Client client) {
         this.id = id;
         this.bookingDate = bookingDate;
         this.bookingState = bookingState;
-        this.user = user;
+        this.client = client;
     }
 
 
@@ -69,12 +69,12 @@ public class Booking {
         this.bookingState.add(bookingState.getId());
     }
 
-    public User getUser() {
-        return user;
+    public User getClient() {
+        return client;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     @Override
